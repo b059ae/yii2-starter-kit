@@ -18,6 +18,8 @@ use yii\db\ActiveRecord;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $meta_description
+ * @property string $meta_keywords
  */
 class Page extends ActiveRecord
 {
@@ -59,8 +61,9 @@ class Page extends ActiveRecord
             [['status'], 'integer'],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 2048],
-            [['title'], 'string', 'max' => 512],
-            [['view'], 'string', 'max' => 255]
+            [['title'], 'string', 'max' => 255],
+            [['view'], 'string', 'max' => 255],
+            [['meta_description','meta_keywords'], 'string', 'max' => 255],
         ];
     }
 
@@ -78,6 +81,8 @@ class Page extends ActiveRecord
             'status' => Yii::t('common', 'Active'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
+            'meta_description' => 'Мета: сниппет',
+            'meta_keywords' => 'Мета: ключевые слова',
         ];
     }
 }

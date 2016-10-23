@@ -32,6 +32,14 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        //Мета-теги
+        foreach (['description', 'keywords'] as $name) {
+            $attr = 'meta_' . $name;
+            \Yii::$app->view->registerMetaTag([
+                'name' => $name,
+                'content' => Yii::$app->keyStorage->get('frontend.' . $attr)
+            ], $name);
+        }
         return $this->render('index');
     }
 

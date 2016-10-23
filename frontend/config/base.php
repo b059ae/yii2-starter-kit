@@ -5,5 +5,8 @@ return [
     'components' => [
         'urlManager' => require(__DIR__.'/_urlManager.php'),
         'cache' => require(__DIR__.'/_cache.php'),
+        /*'view' => [
+            'theme' => 'app\themes\MyTheme',
+        ]*/
     ],
 ];

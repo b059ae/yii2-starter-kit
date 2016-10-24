@@ -57,7 +57,17 @@ $config = [
             'loginUrl'=>['/user/sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
-        ]
+        ],
+        'view' => [
+            'theme' => [
+                /* http://www.yiiframework.com/doc-2.0/guide-output-theming.html */
+                'basePath' => '@frontend/themes/basic',
+                'baseUrl' => '@web/themes/basic',
+                'pathMap' => [
+                    '@frontend/views' => '@frontend/themes/basic',
+                ],
+            ],
+        ],
     ]
 ];
 

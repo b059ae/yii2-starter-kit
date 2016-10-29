@@ -1,0 +1,29 @@
+{
+	"name": "pceuropa/yii2-menu",
+	"description": "Menu bootstrap creator/builder. Sort by drag and drop",
+	"keywords": [
+		"yii2",
+		"extension",
+		"creator",
+		"menu builder",
+		"drag end drop",
+		"bootstrap menu"
+	],
+	"version": "2.0.4",
+	"homepage": "https://github.com/pceuropa/yii2-menu",
+	"type": "yii2-extension",
+	"license": "MIT",
+	"minimum-stability": "dev",
+	"authors": [
+		{
+		  "name": "Rafal Marguzewicz",
+		  "email": "info@pceuropa.net",
+		  "homepage": "https://yii2-menu.pceuropa.net/"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+		  "backend\modules\\menu\\": ""
+		}
+	}
+}

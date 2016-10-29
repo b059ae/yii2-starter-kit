@@ -53,7 +53,7 @@ class WidgetMenu extends ActiveRecord
     public function rules()
     {
         return [
-            [['key', 'title', 'items'], 'required'],
+            [['key', 'title'/*, 'items'*/], 'required'],
             [['key'], 'unique'],
             [['items'], JsonValidator::className()],
             [['status'], 'integer'],

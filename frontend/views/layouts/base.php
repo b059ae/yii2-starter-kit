@@ -17,7 +17,14 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]); ?>
-    <?php echo Nav::widget([
+    <?php echo common\widgets\DbMenu::widget([
+        'key'=>'main',
+        'options'=>[
+            'class'=>'navbar-nav navbar-right nav',
+        ]
+    ]) ?>
+
+    <?php /* echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => Yii::t('frontend', 'Home'), 'url' => ['/site/index']],
@@ -57,7 +64,7 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
                 }, array_keys(Yii::$app->params['availableLocales']))
             ]
         ]
-    ]); ?>
+    ]);*/ ?>
     <?php NavBar::end(); ?>
 
     <?php echo $content ?>

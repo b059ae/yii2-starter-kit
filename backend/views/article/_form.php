@@ -62,6 +62,10 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
 
+    <?php echo $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
+
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <?php echo $form->field($model, 'published_at')->widget(

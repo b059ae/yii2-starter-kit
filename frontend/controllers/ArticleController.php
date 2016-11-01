@@ -4,8 +4,10 @@ namespace frontend\controllers;
 
 use common\models\Article;
 use common\models\ArticleAttachment;
+use common\models\ArticleCategory;
 use frontend\models\search\ArticleSearch;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -15,11 +17,28 @@ use yii\web\NotFoundHttpException;
 class ArticleController extends Controller
 {
     /**
+     * @param string $category
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($category)
     {
+        $model = ArticleCategory::find()->andWhere(['slug'=>$category])->one();
+        if (!$model) {
+            throw new NotFoundHttpException;
+        }
+        //Мета-теги
+        foreach (['description', 'keywords'] as $name) {
+            $attr = 'meta_' . $name;
+            \Yii::$app->view->registerMetaTag([
+                'name' => $name,
+                'content' => strlen($model->$attr) > 0
+                    ? $model->$attr
+                    : Yii::$app->keyStorage->get('frontend.' . $attr)
+            ], $name);
+        }
+
         $searchModel = new ArticleSearch();
+        $searchModel->category_id = $model->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = [
             'defaultOrder' => ['created_at' => SORT_DESC]
@@ -28,15 +47,27 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $category
+     * @param string $slug
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionView($slug)
+    public function actionView($category, $slug)
     {
         $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
         if (!$model) {
             throw new NotFoundHttpException;
+        }
+
+        //Мета-теги
+        foreach (['description', 'keywords'] as $name) {
+            $attr = 'meta_' . $name;
+            \Yii::$app->view->registerMetaTag([
+                'name' => $name,
+                'content' => strlen($model->$attr) > 0
+                    ? $model->$attr
+                    : Yii::$app->keyStorage->get('frontend.' . $attr)
+            ], $name);
         }
 
         $viewFile = $model->view ?: 'view';

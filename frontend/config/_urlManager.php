@@ -4,8 +4,8 @@ return [
     'enablePrettyUrl'=>true,
     'showScriptName'=>false,
     'rules'=> [
-        ['pattern'=>'<category:(news|article)>', 'route'=>'article/index'],
-        ['pattern'=>'<category:(news|article)>/<slug>', 'route'=>'article/view'],
+        ['pattern'=>'<category>/index', 'route'=>'article/index'],
+        ['pattern'=>'<category>/<slug>', 'route'=>'article/view'],
         //['pattern'=>'news/index', 'route'=>'article/index'],
 
         // Articles

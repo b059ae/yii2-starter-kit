@@ -7,6 +7,7 @@ use common\models\ArticleAttachment;
 use common\models\ArticleCategory;
 use frontend\models\search\ArticleSearch;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 

@@ -28,6 +28,8 @@ use yii\db\ActiveRecord;
  * @property integer $updated_by
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $meta_description
+ * @property string $meta_keywords
  *
  * @property User $author
  * @property User $updater
@@ -117,7 +119,8 @@ class Article extends ActiveRecord
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
             [['view'], 'string', 'max' => 255],
-            [['attachments', 'thumbnail'], 'safe']
+            [['attachments', 'thumbnail'], 'safe'],
+            [['meta_description','meta_keywords'], 'string', 'max' => 255],
         ];
     }
 
@@ -139,7 +142,9 @@ class Article extends ActiveRecord
             'created_by' => Yii::t('common', 'Author'),
             'updated_by' => Yii::t('common', 'Updater'),
             'created_at' => Yii::t('common', 'Created At'),
-            'updated_at' => Yii::t('common', 'Updated At')
+            'updated_at' => Yii::t('common', 'Updated At'),
+            'meta_description' => 'Мета: сниппет',
+            'meta_keywords' => 'Мета: ключевые слова',
         ];
     }
 
